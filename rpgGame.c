@@ -21,7 +21,12 @@
 void shanesFileWriter(int choice);
 
 ///////////Shanes room methods end/////////
-
+void result(int right, int left, int middel);
+void rolling(void );
+int  randmath (void);
+void createArray (void);
+void  fillDrArray (int * ptr2 , int d );
+void fiveVowels (char c[20]);
 void extraCredit(void);
 void ignoreExtra(void);
 
@@ -1841,8 +1846,129 @@ int main(void)
 			{
 					while(choice != 99)
 					{
+						int a,b,c,d,i,x,y,z,j,r,m=3,n,roll,count ,choice, points, numoftimes;
+						int cArray[3]={0};
+						int array[3]={0};
+						char string[20]={0};
+						int *ptr1, *ptr2, *wptr, *rptr;
+						ptr1=cArray;
+						ptr2=cArray;
+						cArray[0]=0,cArray[1]=1,cArray[2]=2;	
+						int right=0, left=0, middel=0, die1=0,die2=0,die3=0, die4=0,die5=5,die6=0;
+						int d1value=1, d2value=2 , d3value=3, d4value=4, d5value=5, d6value=6;
+	
+						   puts("You enter the room--the door shuts, loudly! Youlook left and right trying to find a way out. You find none! Your only option is proceed through a dark, long tunnel—as you’re proceeding, you find yourself greeted by flames and unrecognizable noises. Unsure of what you’re about to see, you find no option but to continue. You reach the end, scared to your horror, you find a skull, a soccer-like goal made out of large bones, and piece of goat leather—with information written on it which reads:");
+
+						puts("in the back of the soccer goal there are 3 doors, and you have three attempts to score a goal,\n 1.  if you score one goal you will go through the first door. \n if you score two goals you will go through the second door.  \n if you score 3 goals you will go through the third door. ");
+
+
+	  
+	  					for (i=0;i<3;i++)
+	 					 {
+							puts(" where do you want to shoot the skull? right(1), left(2), or in the midde(3)\n ");
+							 scanf("%d",&choice);
+							if (choice==1)
+							{
+								printf(" you shoot the skull to the right!, and you score a gool!\n");
+								right++;
+							}
+							else if (choice ==2 ) 
+							{
+								printf(" you shoot the skull to the left side, and the goalkeper save it\n ");
+								left++;
+	
+			
+							}	
+	
+							else if (choice ==3 )
+							{
+								printf(" you shoot the skull in the middle, and the goalkeper save it \n");
+								middel++;
+							}
+							else 
+							{
+								puts(" you shoot the skull to the audiounce and you lost a chance, be carful!!\n ");
+							}
+					      }
+
+	  					result (right, left, middel);
+						
+						if (right==1)
+						{
+							srand(time(NULL));
+							rolling();
+		
+							if (roll<=6)
+                					{
+               					         	z=1+rand()%6;
+                       
+
+                        					switch(z)
+                       				 		{
+                                					case 1:
+										die1++;
+										break;
+									case 2: 
+										die2++;
+										break;
+									case 3: 
+										die3++;
+										break;
+									case 4: 
+										die4++;
+										break;
+									case 5:
+										die5++;
+										break;
+									case 6: 
+										die6++;
+										break;
+									defult:
+										break; 
+        					                }
+                					}
+		
+							printf(" you got die1= %d , die2= %d, die3= %d , die4= %d , die5=%d, die6=%d \n ", die1,die2,die3,die4,die5,die6);
+		
+							points=((d1value*die1) + (d2value*die2) + (d3value*die3) + (d4value*die4) + (die5*d5value) + (die6*d6value));	
+							printf(" you got %d points \n",points);
+							if(points>12)
+							{
+								puts("you won the game");
+				
+							}
+							else
+							{
+								puts("SORRY!!! you lost the game, try again if you like it"); 
+							}
+					}	
+
+					else if ( right==2)
+					{
+		
+						randmath();
 
 					}
+					else if ( right==3)
+        				{
+						srand(time(NULL));
+						 createArray();	
+						 fillDrArray(cArray,m);                
+						for (d=0;d<m;d++)
+        					{
+                					printf("  the array is : [%d]= %d \n", d,*ptr1);
+                					ptr1++;
+		
+        					}	
+						puts("ENTER A STRING THAT CONTAIN AT LEAST 5 VOWELS CHARACTER TO WIN THE GAME \n ");
+						fgets(string,20,stdin);
+       						fiveVowels (string);
+					 }
+					else 
+					{
+						puts(" you lost the game!!!!, play again !");
+					}				
+				}
 					break;
 			}
 			case 17:
@@ -5371,5 +5497,92 @@ void weaponPower(int p){
 
 
 
+
+void result(int right, int left, int middel)
+{
+	printf(" you kicked the skull:\n  %d to the right. \n %d to the left. \n %d to the middel \n", right,left,middel);
+}
+void rolling(void )
+{
+			 printf ("THE FIRST DOOR IS OPEN RIGHT NOW! it is your only option... >>>you'r luck will play from now on<<<< \n you go through it and you find a big table with one die, and a speaker!! all of the sudden!! a voice came in saying that  each side from the die countine a number of dots for example, there is one side countin  two dots that means you will get two points. for every time you roll the die the number you get will added to the previous number, you have to reach 15 points to get out of here,and won the game if not you will lose.\n  NOW ARE YOU READY !! let's try how lucky you are \n ");
+}
+
+int  randmath (void)
+{
+	int r,n;
+	printf("THE SECOND DOOR  IS OPEN NOW! there is no other option>>> USE YOUR MATH SKILLS <<< \n you entered from the door and you found a math function to be solved to get out of this door, and won the game");
+	puts (" the math function asking for a number that can display a random numbers between (44 -> 104) (the function that we are going to use is rand()% ----- +-----) solve this problem to get out of here \n" );
+	while (n!=61)
+	{  
+		puts("what's the first number that we are going to put it in the first blank?");
+		scanf("%d",&n);
+		if (n!=61)
+		{
+			puts(" you entered a wrong value try again please! \n");
+		}
+		else
+		{
+			puts (" that's correct ! ");
+		}
+	
+	}
+	while (r!=44)
+        {
+                puts("what's the second number that you are going to put it in the second blank?");
+                scanf("%d",&r);
+                if (r!=44)
+                {
+                        puts(" you entered a wrong value try again please! \n");
+                }
+                else
+                {
+                        puts (" that's correct ! ");
+                }
+		
+        }
+	puts(" you won the game ");
+	return n;
+	 return r;
+}
+
+void createArray (void)
+{
+	printf("THIRD DOOR IS OPEN NOW! there is no other option>>>we are going to create an array of size 3 and fill it with randowm numbers between 100-110, and then you will enter a string to see how many vowels in the string you have. if the string contian more than five vowels character you will won the game\n");
+ 
+}
+void  fillDrArray (int * ptr2 , int d )
+{
+	int m;
+	
+	
+
+        for (m=0;m<d;m++)
+        {
+                 *ptr2= rand()%11+100;
+                ptr2++;
+
+        }
+}
+
+void fiveVowels (char c[20])
+{	
+	int x,y,count=0;
+	char vowels[]={"aeiouAEIOU"};
+	for (x=0;c[x];x++)
+	{
+		for(y=0;vowels[y];y++)
+		{
+
+			if (c[x]==vowels[y])
+			{
+				count++;
+				break;
+				
+			}
+		}
+	}
+	printf("the vowels in the string is %d \n",count);
+
+}
 
 
